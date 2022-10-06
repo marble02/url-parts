@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Javascript from './Javascript'
 import Java from './Java'
 import Python from './Python'
-import javalogo from '../assets/Java_logo.png'
+import javalogo from '../assets/java_logo.png'
 import pylogo from '../assets/py_logo.svg'
 import jslogo from '../assets/js_logo.png'
 
