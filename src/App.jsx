@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import Languages from './components/Languages'
+import diagram from './assets/url-diagram.png'
 
 function App() {
   const [valid, setValid] = useState(true)
+  const [showTable, setShowTable] = useState(false)
   const [url, setUrl] = useState("")
   const [urlObj, setUrlObj] = useState(parseURL())
 
@@ -42,7 +44,13 @@ function App() {
   }, [url])
 
   useEffect(() => {
-    if (urlObj == 'error') {
+    if (urlObj == "" || urlObj == "error") {
+      setShowTable(false)
+    } else {
+      setShowTable(true)
+    }
+
+    if (urlObj == "error") {
       setValid(false)
     }
     else {
@@ -90,11 +98,15 @@ function App() {
         <input type="text" placeholder="Enter url string here..." onChange={e => handleChange(e)}></input>
         {!valid && <div style={{color: "red", fontFamily: "sans-serif"}}>Invalid URL</div>}
         {/* <button onClick={parseURL}>Parse</button> */}
-        <table>
-          <tbody>
-            {allParts}
-          </tbody>
-        </table>
+        <div className="table-container">
+          {!showTable && <div>Enter url to get parsing</div>}
+          <img className="url-diagram-img" src={diagram} />
+          <table >
+            <tbody >
+              {showTable && allParts}
+            </tbody>
+          </table>
+        </div>
         <Languages />
       </div>
     </div>

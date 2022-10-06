@@ -13,8 +13,11 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   background-color: #eaf0f8;
   height: 100%;
+  width: 100%;
+  overflow: auto;
 }
 
 input {
@@ -30,22 +33,27 @@ input {
   font-size: 16px;
 }
 
-table {
+.table-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 30px;
   margin-top: 10px;
-  width: 600px;
+  max-width: 70%;
+  overflow: auto;
+}
+
+table {
+  /* width: 60%; */
   border-collapse: collapse;
+  border-style: hidden;
   font-family: system-ui, sans-serif;
   color: slategray;
-  border-style: hidden;
 }
 
 .inner-table {
   margin: 0;
-}
-
-tr {
-  width: 300px;
 }
 
 th {
@@ -56,18 +64,26 @@ th {
 th, td {
   padding: 5px 10px;
   text-align: left;
-  /* border: 0.5px solid rgb(192, 206, 220); */
+  /* border: 0.5px solid rgb(190, 212, 235); */
   border: 2px solid rgb(215, 226, 236);
 }
 
+td {
+  max-width: 500px;
+  overflow: auto;
+}
+
+.languages-container {
+  width: 70%;
+  max-width: 800px;
+}
+
 .language {
-  width: 600px;
+  width: 50%;
 }
 
 .tabs-container {
   display: flex;
-  border-bottom: 8px solid rgb(155, 203, 251);
-  margin: -2px;
 }
 
 .tab-title {
@@ -87,15 +103,14 @@ th, td {
 .active-tab {
   color: #eee;
   background-color: slategray;
-  /* box-shadow: 0 0 3px 1px slategray; */
   border: 0.5px solid gray;
 }
 
 .tab-content-container {
-  width: 800px;
+  width: 100%;
   min-height: 500px;
+  border-top: 5px solid rgb(155, 203, 251);
   border-radius: 0 0 10px 10px;
-  box-shadow: 0 0 2px 2px lightslategray;
   background-color: lightslategray;
   color: #eee;
   font-family: system-ui, sans-serif;
@@ -106,9 +121,16 @@ th, td {
 
 .content {
   display: none;
+  padding: 0 15px;
 }
 
 .active-content {
   display: block;
   font-size: 14px;
+}
+
+.url-diagram-img {
+  width: 100%;
+  height: 130px;
+  /* background-color: white; */
 }
