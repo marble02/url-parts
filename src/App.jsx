@@ -82,12 +82,42 @@ function App() {
       </tbody></table>)
   }
 
+  function containsEncodedComponents(x) {
+    // ie ?,=,&,/ etc
+    return (decodeURI(x) !== decodeURIComponent(x));
+  }
+
+  function handleDecoding(key) {
+    // console.log(typeof urlObj[key], key)
+    if (containsEncodedComponents(urlObj[key])) {
+      // console.log("here")
+      return (
+          <tbody className="inner-table">
+            <tr><td>{urlObj[key]}</td></tr>
+            <tr><td><p className="decoded-text">{`decoded`}</p>{decodeURIComponent(urlObj[key])}</td></tr>
+          </tbody>
+      )
+    } else {
+      return (<td>{urlObj[key]}</td>)
+    }
+  }
+
+  function handlePartForTable(key) {
+    if (key === "searchParams") {
+      return (<td>{doSearchParam()}</td>)
+    } else {
+      return handleDecoding(key)
+    }
+
+  }
+
   const allParts = keys.map( (k, i) => {
     if (urlObj[k]) {
       return (
         <tr key={k}>
           <th>{k}</th>
-          {k === "searchParams" ? <td>{doSearchParam()}</td> : <td>{urlObj[k]}</td>}
+          {/* {k === "searchParams" ? <td>{doSearchParam()}</td> : <td>{urlObj[k]}</td>} */}
+          {handlePartForTable(k)}
         </tr>
       )
     }
