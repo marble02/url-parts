@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Javascript from './Javascript'
+import Java from './Java'
 
 export default function Languages() {
     const [activeTab, setActiveTab] = useState(0)
@@ -16,7 +17,7 @@ export default function Languages() {
         },
         {
             name: "Java",
-            body: <div>Java Content</div>
+            body: <Java />
         },
         {
             name: "Python",
@@ -47,7 +48,8 @@ export default function Languages() {
     })
 
   return (
-    <div>
+    <div className="languages-container">
+        <h2>References for URL Parsing</h2>
         <div className="tabs-container">
             {tabs}
         </div>
