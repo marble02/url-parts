@@ -82,11 +82,16 @@ function App() {
       </tbody></table>)
   }
 
-  const allParts = keys.map( (k, i) => 
-    <tr key={k}>
-      <th>{k}</th>
-      {k === "searchParams" ? <td>{doSearchParam()}</td> : <td>{urlObj[k]}</td>}
-    </tr>
+  const allParts = keys.map( (k, i) => {
+    if (urlObj[k]) {
+      return (
+        <tr key={k}>
+          <th>{k}</th>
+          {k === "searchParams" ? <td>{doSearchParam()}</td> : <td>{urlObj[k]}</td>}
+        </tr>
+      )
+    }
+  }
   )
 
   return (

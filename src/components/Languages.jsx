@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 import Javascript from './Javascript'
 import Java from './Java'
+import Python from './Python'
+import javalogo from '../assets/Java_logo.png'
+import pylogo from '../assets/py_logo.svg'
+import jslogo from '../assets/js_logo.png'
 
 export default function Languages() {
     const [activeTab, setActiveTab] = useState(0)
@@ -13,15 +17,18 @@ export default function Languages() {
     const langs = [
         { 
             name: "JavaScript",
-            body: <Javascript />
+            body: <Javascript />,
+            logo: jslogo,
         },
         {
             name: "Java",
-            body: <Java />
+            body: <Java />,
+            logo: javalogo,
         },
         {
             name: "Python",
-            body: <div>Python Content</div>
+            body: <Python />,
+            logo: pylogo,
         }
     ]
 
@@ -35,7 +42,7 @@ export default function Languages() {
 
     const tabs = langs.map( (t, i) => {
         return (<div key={i} className={activeTab === i ? `tab-title active-tab` : `tab-title`}>
-            <div data-index={i} onClick={() => handleTabClick(i)}>{t.name}</div>
+            <div data-index={i} onClick={() => handleTabClick(i)}><img className="logo" src={t.logo}/>{t.name}</div>
         </div>)
     })
 
